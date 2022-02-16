@@ -11,7 +11,7 @@
  * Plugin Name: Unprotect Protected Posts
  * Plugin URI: https://github.com/soderlind/unprotect-protected-posts
  * GitHub Plugin URI: https://github.com/soderlind/unprotect-protected-posts
- * Description: Give direct access to logged-in users and/or users from a defined IP-address
+ * Description: Give direct access to logged-in users and/or users from a defined IP-address to the protected posts.
  * Version:     0.0.1
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
