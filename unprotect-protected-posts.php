@@ -2,7 +2,7 @@
 /**
  * Name: Unprotect Protected Posts
  *
- * @package     Soderlind\ProtectProtectedPages
+ * @package     Soderlind\Plugin\Unprotect
  * @author      Per Soderlind
  * @copyright   2021 Per Soderlind
  * @license     GPL-2.0+
@@ -21,7 +21,7 @@
  */
 
 declare( strict_types = 1 );
-namespace Soderlind\ProtectProtectedPages;
+namespace Soderlind\Plugin\Unprotect;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	wp_die();

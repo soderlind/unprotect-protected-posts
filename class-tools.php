@@ -2,12 +2,12 @@
 /**
  * Tools for Protect Protected Posts
  *
- * @package     Soderlind\ProtectProtectedPages
+ * @package     Soderlind\Plugin\Unprotect
  * @author      Per Soderlind
  */
 
 declare( strict_types = 1 );
-namespace Soderlind\ProtectProtectedPages;
+namespace Soderlind\Plugin\Unprotect;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	wp_die();
