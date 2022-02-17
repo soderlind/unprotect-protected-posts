@@ -55,12 +55,12 @@ class Options {
 		$html .= __( 'Unprotect Protected Posts', 'unprotect-protected-posts' );
 		$html .= '</h1>';
 		$html .= '<p>';
-		$html .= __( 'Give direct access to logged - in users and/or users from a defined IP - address to the <a href="https://wordpress.org/support/article/using-password-protection/#password-protected-posts">protected posts</a>.', 'unprotect-protected-posts' );
+		$html .= __( 'Give direct access to logged-in users and/or users from a defined IP-address to the <a href="https://wordpress.org/support/article/using-password-protection/#password-protected-posts">protected posts</a>.', 'unprotect-protected-posts' );
 		$html .= '</p>';
 		$html .= '<form method ="post" action="options.php">';
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					settings_fields( 'unprotect_protected_posts_group' );
-					do_settings_sections( 'unprotect - protected - posts - admin' );
+					do_settings_sections( 'unprotect-protected-posts-admin' );
 					submit_button();
 		$html  = '</form>';
 		$html .= '</div>';
@@ -83,30 +83,30 @@ class Options {
 			'unprotect_protected_posts_section',
 			'',
 			[ $this, 'section_info' ],
-			'unprotect - protected - posts - admin'
+			'unprotect-protected-posts-admin'
 		);
 
 		add_settings_field(
 			'give_access',
-			__( 'Allow logged in user ? ', 'unprotect - protected - posts' ),
+			__( 'Allow logged in user?', 'unprotect-protected-posts' ),
 			[ $this, 'give_access_callback' ],
-			'unprotect - protected - posts - admin',
+			'unprotect-protected-posts-admin',
 			'unprotect_protected_posts_section',
 			[
 				'label_for'   => 'give_access',
-				'description' => 'Give access to logged in users',
+				'description' => __( 'Give access to logged in users', 'unprotect-protected-posts' ),
 			]
 		);
 
 		add_settings_field(
 			'ip_addresses',
-			__( 'Add IP - address', 'unprotect - protected - posts' ),
+			__( 'Add IP-address', 'unprotect-protected-posts' ),
 			[ $this, 'ip_address_callback' ],
-			'unprotect - protected - posts - admin',
+			'unprotect-protected-posts-admin',
 			'unprotect_protected_posts_section',
 			[
 				'label_for'   => 'ip_addresses',
-				'description' => __( 'One per line . Also accepts / subnet - mask, as in 1.2.3.4 / 32.', 'unprotect - protected - posts' ) . ' ' . __( 'Your IP - Address is : ', 'unprotect - protected - posts' ) . Tools::get_client_ip_address(),
+				'description' => __( 'One per line . Also accepts /subnet-mask, as in 1.2.3.4/32.', 'unprotect-protected-posts' ) . ' ' . __( 'Your IP-Address is: ', 'unprotect-protected-posts' ) . Tools::get_client_ip_address(),
 			]
 		);
 	}
@@ -142,7 +142,7 @@ class Options {
 					if ( ! Tools::is_ip( $ip_address ) ) {
 						$type = 'error';
 						// translators: %s is the IP-address.
-						$message = sprintf( __( '%s is not a valid IP - address', 'unprotect-protected-posts' ), esc_html( $ip_address ) );
+						$message = sprintf( __( '%s is not a valid IP-address', 'unprotect-protected-posts' ), esc_html( $ip_address ) );
 						add_settings_error(
 							'unprotect_protected_posts',
 							esc_attr( 'settings_updated' ),
