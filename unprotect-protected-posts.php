@@ -28,35 +28,50 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once __DIR__ . '/class-tools.php';
-require_once __DIR__ . '/class-options.php';
 
 if ( is_admin() ) {
+	load_plugin_textdomain( 'unprotect-protected-posts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	require_once __DIR__ . '/class-options.php';
 	$unprotect_protected_posts = new Options();
 }
 
-$options = get_option( 'unprotect_protected_posts', false );
-if ( ! $options ) {
-	return;
-}
 
-add_action(
-	'init',
-	function() use ( $options ) {
+/**
+ * Filters whether a post requires the user to supply a password.
+ *
+ * @param bool     $required Whether the user needs to supply a password. True if password has not been
+ * provided or is incorrect, false if password has been supplied or is not required.
+ *
+ * @param \WP_Post $post     Post object.
+ * @return bool Whether the user needs to supply a password. True if password has not been
+ * provided or is incorrect, false if password has been supplied or is not required.
+ */
+add_filter(
+	'post_password_required',
+	function( bool $required, \WP_Post $post ) : bool {
+
+		$options = get_option( 'unprotect_protected_posts', false );
+		if ( ! $options ) {
+			return $required;
+		}
 
 		if ( is_user_logged_in() && isset( $options['give_access'] ) && 'yes' === $options['give_access'] ) {
-			add_filter( 'post_password_required', '__return_false' );
-		} else {
-			$allowed_ips = ( isset( $options['ip_addresses'] ) ) ? explode( "\n", $options['ip_addresses'] ) : [];
-			$allowed_ips = array_map( 'trim', $allowed_ips );
-			if ( count( $allowed_ips ) > 0 ) {
-				$remote_ip = Tools::get_client_ip_address();
-				foreach ( $allowed_ips as $line ) {
-					if ( Tools::ip_in_range( $remote_ip, $line ) ) {
-						add_filter( 'post_password_required', '__return_false' );
-						return;
-					}
+			return false;
+		}
+
+		$allowed_ips = ( isset( $options['ip_addresses'] ) ) ? explode( "\n", $options['ip_addresses'] ) : [];
+		$allowed_ips = array_map( 'trim', $allowed_ips );
+		if ( count( $allowed_ips ) > 0 ) {
+			$remote_ip = Tools::get_client_ip_address();
+			foreach ( $allowed_ips as $line ) {
+				if ( Tools::ip_in_range( $remote_ip, $line ) ) {
+					return false;
 				}
 			}
 		}
-	}
+
+		return $required;
+	},
+	10,
+	2
 );

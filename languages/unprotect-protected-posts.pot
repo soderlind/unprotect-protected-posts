@@ -1,0 +1,65 @@
+# Copyright (C) 2022 Per Soderlind
+# This file is distributed under the same license as the Unprotect Protected Posts plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Unprotect Protected Posts 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/unprotect-protected-posts\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-02-17T10:19:52+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: unprotect-protected-posts\n"
+
+#. Plugin Name of the plugin
+#: class-options.php:55
+msgid "Unprotect Protected Posts"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/soderlind/unprotect-protected-posts"
+msgstr ""
+
+#. Description of the plugin
+msgid "Give direct access to logged-in users and/or users from a defined IP-address to the protected posts."
+msgstr ""
+
+#. Author of the plugin
+msgid "Per Soderlind"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://soderlind.no"
+msgstr ""
+
+#: class-options.php:58
+msgid "Give direct access to logged-in users and/or users from a defined IP-address to the <a href=\"https://wordpress.org/support/article/using-password-protection/#password-protected-posts\">protected posts</a>."
+msgstr ""
+
+#: class-options.php:91
+msgid "Allow logged in user?"
+msgstr ""
+
+#: class-options.php:97
+msgid "Give access to logged in users"
+msgstr ""
+
+#: class-options.php:103
+msgid "Add IP-address"
+msgstr ""
+
+#: class-options.php:109
+msgid "One per line . Also accepts /subnet-mask, as in 1.2.3.4/32."
+msgstr ""
+
+#: class-options.php:109
+msgid "Your IP-Address is: "
+msgstr ""
+
+#. translators: %s is the IP-address.
+#: class-options.php:145
+msgid "%s is not a valid IP-address"
+msgstr ""
