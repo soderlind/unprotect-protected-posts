@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/soderlind/unprotect-protected-posts
  * GitHub Plugin URI: https://github.com/soderlind/unprotect-protected-posts
  * Description: Give direct access to logged-in users and/or users from a defined IP-address to the protected posts.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: unprotect-protected-posts
@@ -42,13 +42,13 @@ if ( is_admin() ) {
  * @param bool     $required Whether the user needs to supply a password. True if password has not been
  * provided or is incorrect, false if password has been supplied or is not required.
  *
- * @param \WP_Post $post     Post object.
+ * @param mixed $post     Post object | null
  * @return bool Whether the user needs to supply a password. True if password has not been
  * provided or is incorrect, false if password has been supplied or is not required.
  */
 add_filter(
 	'post_password_required',
-	function( bool $required, \WP_Post $post ) : bool {
+	function( bool $required, $post ) : bool {
 
 		$options = get_option( 'unprotect_protected_posts', false );
 		if ( ! $options ) {
